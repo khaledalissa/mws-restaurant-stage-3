@@ -214,10 +214,30 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 
 
 
+const channel = new BroadcastChannel('sw-messages');
+
+channel.onmessage = event => {
+  console.log('adding deferred review');
+  if (event.data.action = 'add-review'){
+    addReview(event.data.review);
+  }
+}
 
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator ) {
   navigator.serviceWorker.register('/sw.js');
+}
+
+
+
+if ('serviceWorker' in navigator && 'SyncManager' in window) {
+  navigator.serviceWorker.ready.then(function(reg) {
+    return reg.sync.register('sync-reviews');
+  }).catch(function() {
+    navigator.serviceWorker.controller.postMessage('sync-reviews');
+  });
+} else {
+  navigator.serviceWorker.controller.postMessage('sync-reviews');
 }
 
 

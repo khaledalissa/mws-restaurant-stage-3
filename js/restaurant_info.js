@@ -145,7 +145,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     container.appendChild(noReviews);
     return;
   }
-  const ul = document.createElement('div')
+  const ul = document.createElement('ul')
   ul.id = 'reviews-list';
   reviews.forEach(review => {
     ul.appendChild(createReviewHTML(review));
@@ -175,14 +175,14 @@ createReviewHTML = (review) => {
   comments.innerHTML = review.comments;
   li.appendChild(comments);
 
-  const delete_link = document.createElement('a');
-  delete_link.onclick = function(){
-    event.preventDefault(); 
-    deleteReview(review.id);
-  }
-  delete_link.href=""
-  delete_link.innerHTML = "Delete";
-  li.appendChild(delete_link);
+  // const delete_link = document.createElement('a');
+  // delete_link.onclick = function(){
+  //   event.preventDefault(); 
+  //   deleteReview(review.id);
+  // }
+  // delete_link.href=""
+  // delete_link.innerHTML = "Delete";
+  // li.appendChild(delete_link);
 
   if(review['is_deferred'] == 'true'){
     const deferred_message = document.createElement('p');

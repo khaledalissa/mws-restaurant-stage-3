@@ -53,19 +53,24 @@
     <section id="new-review-container">
       <h2> Add new Review </h2>
         <form id='review-form'  onsubmit="event.preventDefault(); submitReview();" method="post" >
+          <label for="restaurant_id" style='display: none'>restaurant ID</label>
           <input name="restaurant_id" style='display: none'/>
-          <b> Name:</b>
+          
+          <label for="name">Name</label>
           <br/> 
           <input id='name' name="name"/> 
           <br/>
-          <b>Rating:</b>
+
+          <label for="rating">Rating</label>
           <br/>
-          <input type="number" name="rating"/>
+          <input type="number" id='rating' name="rating"/>
           <br/>
-          <b>Review:</b>
+
+          <label for="review">Review</label>
           <br/>
           <textarea name="comments" id='review' cols='50' rows='4' > </textarea>
           <br/>
+
           <input type='submit' value='Submit'> 
         </form>
     </section>
